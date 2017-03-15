@@ -1,0 +1,676 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4202AD661E7637BA00CAE069 /* AccelAlgoritnm.c in Sources */ = {isa = PBXBuildFile; fileRef = 4202AD641E7637BA00CAE069 /* AccelAlgoritnm.c */; };
+		42476DD81E71358E00F54303 /* ORSSerialBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DCF1E71358E00F54303 /* ORSSerialBuffer.m */; };
+		42476DD91E71358E00F54303 /* ORSSerialPacketDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD11E71358E00F54303 /* ORSSerialPacketDescriptor.m */; };
+		42476DDA1E71358E00F54303 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD31E71358E00F54303 /* ORSSerialPort.m */; };
+		42476DDB1E71358E00F54303 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD51E71358E00F54303 /* ORSSerialPortManager.m */; };
+		42476DDC1E71358E00F54303 /* ORSSerialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD71E71358E00F54303 /* ORSSerialRequest.m */; };
+		42476DDE1E713D1300F54303 /* serialPortDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42476DDD1E713D1300F54303 /* serialPortDataParser.swift */; };
+		427850501E6E8AF4005B8695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278504F1E6E8AF4005B8695 /* AppDelegate.swift */; };
+		427850521E6E8AF4005B8695 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427850511E6E8AF4005B8695 /* ViewController.swift */; };
+		427850541E6E8AF4005B8695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427850531E6E8AF4005B8695 /* Assets.xcassets */; };
+		427850571E6E8AF4005B8695 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427850551E6E8AF4005B8695 /* Main.storyboard */; };
+		427850621E6E8AF4005B8695 /* SerialPortAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427850611E6E8AF4005B8695 /* SerialPortAppTests.swift */; };
+		4278506D1E6E8AF4005B8695 /* SerialPortAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278506C1E6E8AF4005B8695 /* SerialPortAppUITests.swift */; };
+		4F287E52194376A271882BF7 /* libPods-SerialPortApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8E962FD5A800D5223894C4 /* libPods-SerialPortApp.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4278505E1E6E8AF4005B8695 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 427850441E6E8AF4005B8695 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4278504B1E6E8AF4005B8695;
+			remoteInfo = SerialPortApp;
+		};
+		427850691E6E8AF4005B8695 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 427850441E6E8AF4005B8695 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4278504B1E6E8AF4005B8695;
+			remoteInfo = SerialPortApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4202AD641E7637BA00CAE069 /* AccelAlgoritnm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AccelAlgoritnm.c; sourceTree = "<group>"; };
+		4202AD651E7637BA00CAE069 /* AccelAlgoritnm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelAlgoritnm.h; sourceTree = "<group>"; };
+		42476DCE1E71358E00F54303 /* ORSSerialBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialBuffer.h; sourceTree = "<group>"; };
+		42476DCF1E71358E00F54303 /* ORSSerialBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialBuffer.m; sourceTree = "<group>"; };
+		42476DD01E71358E00F54303 /* ORSSerialPacketDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPacketDescriptor.h; sourceTree = "<group>"; };
+		42476DD11E71358E00F54303 /* ORSSerialPacketDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPacketDescriptor.m; sourceTree = "<group>"; };
+		42476DD21E71358E00F54303 /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPort.h; sourceTree = "<group>"; };
+		42476DD31E71358E00F54303 /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
+		42476DD41E71358E00F54303 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
+		42476DD51E71358E00F54303 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
+		42476DD61E71358E00F54303 /* ORSSerialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialRequest.h; sourceTree = "<group>"; };
+		42476DD71E71358E00F54303 /* ORSSerialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialRequest.m; sourceTree = "<group>"; };
+		42476DDD1E713D1300F54303 /* serialPortDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serialPortDataParser.swift; sourceTree = "<group>"; };
+		4278504C1E6E8AF4005B8695 /* SerialPortApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SerialPortApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4278504F1E6E8AF4005B8695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		427850511E6E8AF4005B8695 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		427850531E6E8AF4005B8695 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		427850561E6E8AF4005B8695 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		427850581E6E8AF4005B8695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4278505D1E6E8AF4005B8695 /* SerialPortAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerialPortAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		427850611E6E8AF4005B8695 /* SerialPortAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialPortAppTests.swift; sourceTree = "<group>"; };
+		427850631E6E8AF4005B8695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		427850681E6E8AF4005B8695 /* SerialPortAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerialPortAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4278506C1E6E8AF4005B8695 /* SerialPortAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialPortAppUITests.swift; sourceTree = "<group>"; };
+		4278506E1E6E8AF4005B8695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4278507B1E6E98FC005B8695 /* SerialPortApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SerialPortApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		4B14AA1EA89A8442DDE6F821 /* Pods-SerialPortApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SerialPortApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SerialPortApp/Pods-SerialPortApp.release.xcconfig"; sourceTree = "<group>"; };
+		4B8E962FD5A800D5223894C4 /* libPods-SerialPortApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SerialPortApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		918AA5ABBA25406FD66F6D0C /* Pods-SerialPortApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SerialPortApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SerialPortApp/Pods-SerialPortApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		427850491E6E8AF4005B8695 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F287E52194376A271882BF7 /* libPods-SerialPortApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4278505A1E6E8AF4005B8695 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		427850651E6E8AF4005B8695 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3797196155135D1C2374B038 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				918AA5ABBA25406FD66F6D0C /* Pods-SerialPortApp.debug.xcconfig */,
+				4B14AA1EA89A8442DDE6F821 /* Pods-SerialPortApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		42476DCC1E71358E00F54303 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				42476DCD1E71358E00F54303 /* ORSSerialPort */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		42476DCD1E71358E00F54303 /* ORSSerialPort */ = {
+			isa = PBXGroup;
+			children = (
+				42476DCE1E71358E00F54303 /* ORSSerialBuffer.h */,
+				42476DCF1E71358E00F54303 /* ORSSerialBuffer.m */,
+				42476DD01E71358E00F54303 /* ORSSerialPacketDescriptor.h */,
+				42476DD11E71358E00F54303 /* ORSSerialPacketDescriptor.m */,
+				42476DD21E71358E00F54303 /* ORSSerialPort.h */,
+				42476DD31E71358E00F54303 /* ORSSerialPort.m */,
+				42476DD41E71358E00F54303 /* ORSSerialPortManager.h */,
+				42476DD51E71358E00F54303 /* ORSSerialPortManager.m */,
+				42476DD61E71358E00F54303 /* ORSSerialRequest.h */,
+				42476DD71E71358E00F54303 /* ORSSerialRequest.m */,
+			);
+			path = ORSSerialPort;
+			sourceTree = "<group>";
+		};
+		427850431E6E8AF4005B8695 = {
+			isa = PBXGroup;
+			children = (
+				4278504E1E6E8AF4005B8695 /* SerialPortApp */,
+				427850601E6E8AF4005B8695 /* SerialPortAppTests */,
+				4278506B1E6E8AF4005B8695 /* SerialPortAppUITests */,
+				4278504D1E6E8AF4005B8695 /* Products */,
+				3797196155135D1C2374B038 /* Pods */,
+				D9ED40E8188DCF4AA5E62413 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4278504D1E6E8AF4005B8695 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4278504C1E6E8AF4005B8695 /* SerialPortApp.app */,
+				4278505D1E6E8AF4005B8695 /* SerialPortAppTests.xctest */,
+				427850681E6E8AF4005B8695 /* SerialPortAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4278504E1E6E8AF4005B8695 /* SerialPortApp */ = {
+			isa = PBXGroup;
+			children = (
+				4278507B1E6E98FC005B8695 /* SerialPortApp-Bridging-Header.h */,
+				42476DCC1E71358E00F54303 /* Module */,
+				4278507A1E6E8E18005B8695 /* Model */,
+				4278504F1E6E8AF4005B8695 /* AppDelegate.swift */,
+				427850511E6E8AF4005B8695 /* ViewController.swift */,
+				427850531E6E8AF4005B8695 /* Assets.xcassets */,
+				427850551E6E8AF4005B8695 /* Main.storyboard */,
+				427850581E6E8AF4005B8695 /* Info.plist */,
+			);
+			path = SerialPortApp;
+			sourceTree = "<group>";
+		};
+		427850601E6E8AF4005B8695 /* SerialPortAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				427850611E6E8AF4005B8695 /* SerialPortAppTests.swift */,
+				427850631E6E8AF4005B8695 /* Info.plist */,
+			);
+			path = SerialPortAppTests;
+			sourceTree = "<group>";
+		};
+		4278506B1E6E8AF4005B8695 /* SerialPortAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4278506C1E6E8AF4005B8695 /* SerialPortAppUITests.swift */,
+				4278506E1E6E8AF4005B8695 /* Info.plist */,
+			);
+			path = SerialPortAppUITests;
+			sourceTree = "<group>";
+		};
+		4278507A1E6E8E18005B8695 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42476DDD1E713D1300F54303 /* serialPortDataParser.swift */,
+				4202AD641E7637BA00CAE069 /* AccelAlgoritnm.c */,
+				4202AD651E7637BA00CAE069 /* AccelAlgoritnm.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D9ED40E8188DCF4AA5E62413 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4B8E962FD5A800D5223894C4 /* libPods-SerialPortApp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4278504B1E6E8AF4005B8695 /* SerialPortApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 427850711E6E8AF4005B8695 /* Build configuration list for PBXNativeTarget "SerialPortApp" */;
+			buildPhases = (
+				C9E9FBBF8854DCB1E9999749 /* [CP] Check Pods Manifest.lock */,
+				427850481E6E8AF4005B8695 /* Sources */,
+				427850491E6E8AF4005B8695 /* Frameworks */,
+				4278504A1E6E8AF4005B8695 /* Resources */,
+				4F27B48587184C3B6BEE55A3 /* [CP] Embed Pods Frameworks */,
+				2C2F126AFADA3A74EC164B67 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SerialPortApp;
+			productName = SerialPortApp;
+			productReference = 4278504C1E6E8AF4005B8695 /* SerialPortApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4278505C1E6E8AF4005B8695 /* SerialPortAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 427850741E6E8AF4005B8695 /* Build configuration list for PBXNativeTarget "SerialPortAppTests" */;
+			buildPhases = (
+				427850591E6E8AF4005B8695 /* Sources */,
+				4278505A1E6E8AF4005B8695 /* Frameworks */,
+				4278505B1E6E8AF4005B8695 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4278505F1E6E8AF4005B8695 /* PBXTargetDependency */,
+			);
+			name = SerialPortAppTests;
+			productName = SerialPortAppTests;
+			productReference = 4278505D1E6E8AF4005B8695 /* SerialPortAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		427850671E6E8AF4005B8695 /* SerialPortAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 427850771E6E8AF4005B8695 /* Build configuration list for PBXNativeTarget "SerialPortAppUITests" */;
+			buildPhases = (
+				427850641E6E8AF4005B8695 /* Sources */,
+				427850651E6E8AF4005B8695 /* Frameworks */,
+				427850661E6E8AF4005B8695 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4278506A1E6E8AF4005B8695 /* PBXTargetDependency */,
+			);
+			name = SerialPortAppUITests;
+			productName = SerialPortAppUITests;
+			productReference = 427850681E6E8AF4005B8695 /* SerialPortAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		427850441E6E8AF4005B8695 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = ST004;
+				TargetAttributes = {
+					4278504B1E6E8AF4005B8695 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ACV7QGFPE8;
+						ProvisioningStyle = Automatic;
+					};
+					4278505C1E6E8AF4005B8695 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ACV7QGFPE8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4278504B1E6E8AF4005B8695;
+					};
+					427850671E6E8AF4005B8695 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ACV7QGFPE8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4278504B1E6E8AF4005B8695;
+					};
+				};
+			};
+			buildConfigurationList = 427850471E6E8AF4005B8695 /* Build configuration list for PBXProject "SerialPortApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 427850431E6E8AF4005B8695;
+			productRefGroup = 4278504D1E6E8AF4005B8695 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4278504B1E6E8AF4005B8695 /* SerialPortApp */,
+				4278505C1E6E8AF4005B8695 /* SerialPortAppTests */,
+				427850671E6E8AF4005B8695 /* SerialPortAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4278504A1E6E8AF4005B8695 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				427850541E6E8AF4005B8695 /* Assets.xcassets in Resources */,
+				427850571E6E8AF4005B8695 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4278505B1E6E8AF4005B8695 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		427850661E6E8AF4005B8695 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2C2F126AFADA3A74EC164B67 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SerialPortApp/Pods-SerialPortApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F27B48587184C3B6BEE55A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SerialPortApp/Pods-SerialPortApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9E9FBBF8854DCB1E9999749 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		427850481E6E8AF4005B8695 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4202AD661E7637BA00CAE069 /* AccelAlgoritnm.c in Sources */,
+				427850521E6E8AF4005B8695 /* ViewController.swift in Sources */,
+				42476DDE1E713D1300F54303 /* serialPortDataParser.swift in Sources */,
+				42476DDA1E71358E00F54303 /* ORSSerialPort.m in Sources */,
+				42476DDC1E71358E00F54303 /* ORSSerialRequest.m in Sources */,
+				42476DD91E71358E00F54303 /* ORSSerialPacketDescriptor.m in Sources */,
+				42476DDB1E71358E00F54303 /* ORSSerialPortManager.m in Sources */,
+				427850501E6E8AF4005B8695 /* AppDelegate.swift in Sources */,
+				42476DD81E71358E00F54303 /* ORSSerialBuffer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		427850591E6E8AF4005B8695 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				427850621E6E8AF4005B8695 /* SerialPortAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		427850641E6E8AF4005B8695 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4278506D1E6E8AF4005B8695 /* SerialPortAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4278505F1E6E8AF4005B8695 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4278504B1E6E8AF4005B8695 /* SerialPortApp */;
+			targetProxy = 4278505E1E6E8AF4005B8695 /* PBXContainerItemProxy */;
+		};
+		4278506A1E6E8AF4005B8695 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4278504B1E6E8AF4005B8695 /* SerialPortApp */;
+			targetProxy = 427850691E6E8AF4005B8695 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		427850551E6E8AF4005B8695 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				427850561E6E8AF4005B8695 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4278506F1E6E8AF4005B8695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		427850701E6E8AF4005B8695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		427850721E6E8AF4005B8695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 918AA5ABBA25406FD66F6D0C /* Pods-SerialPortApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ACV7QGFPE8;
+				INFOPLIST_FILE = SerialPortApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ST004.SerialPortApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SerialPortApp/SerialPortApp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		427850731E6E8AF4005B8695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B14AA1EA89A8442DDE6F821 /* Pods-SerialPortApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ACV7QGFPE8;
+				INFOPLIST_FILE = SerialPortApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ST004.SerialPortApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SerialPortApp/SerialPortApp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		427850751E6E8AF4005B8695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ACV7QGFPE8;
+				INFOPLIST_FILE = SerialPortAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ST004.SerialPortAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SerialPortApp.app/Contents/MacOS/SerialPortApp";
+			};
+			name = Debug;
+		};
+		427850761E6E8AF4005B8695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ACV7QGFPE8;
+				INFOPLIST_FILE = SerialPortAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ST004.SerialPortAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SerialPortApp.app/Contents/MacOS/SerialPortApp";
+			};
+			name = Release;
+		};
+		427850781E6E8AF4005B8695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ACV7QGFPE8;
+				INFOPLIST_FILE = SerialPortAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ST004.SerialPortAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SerialPortApp;
+			};
+			name = Debug;
+		};
+		427850791E6E8AF4005B8695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ACV7QGFPE8;
+				INFOPLIST_FILE = SerialPortAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ST004.SerialPortAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SerialPortApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		427850471E6E8AF4005B8695 /* Build configuration list for PBXProject "SerialPortApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4278506F1E6E8AF4005B8695 /* Debug */,
+				427850701E6E8AF4005B8695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		427850711E6E8AF4005B8695 /* Build configuration list for PBXNativeTarget "SerialPortApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				427850721E6E8AF4005B8695 /* Debug */,
+				427850731E6E8AF4005B8695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		427850741E6E8AF4005B8695 /* Build configuration list for PBXNativeTarget "SerialPortAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				427850751E6E8AF4005B8695 /* Debug */,
+				427850761E6E8AF4005B8695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		427850771E6E8AF4005B8695 /* Build configuration list for PBXNativeTarget "SerialPortAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				427850781E6E8AF4005B8695 /* Debug */,
+				427850791E6E8AF4005B8695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 427850441E6E8AF4005B8695 /* Project object */;
+}

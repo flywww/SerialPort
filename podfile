@@ -1,0 +1,4 @@
+target 'SerialPortApp' do
+    pod 'CorePlot'
+end
+
