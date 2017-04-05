@@ -11,6 +11,9 @@
 
 #include <stdio.h>
 
+int32_t accelSqrtAvg;
+int16_t accelMoveAvg;
+
 typedef struct
 {
     int16_t ACCEL_X;

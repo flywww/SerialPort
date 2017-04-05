@@ -7,20 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EE489F03F2E581CE2C6CF17 /* libPods-SerialPortApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2908C51E9BED913100DEE3DE /* libPods-SerialPortApp.a */; };
 		4202AD661E7637BA00CAE069 /* AccelAlgoritnm.c in Sources */ = {isa = PBXBuildFile; fileRef = 4202AD641E7637BA00CAE069 /* AccelAlgoritnm.c */; };
+		421200F91E8A415500FD9686 /* NSColor_Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421200F81E8A415500FD9686 /* NSColor_Extention.swift */; };
+		421200FC1E8B8EAC00FD9686 /* OnlyIntegerValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421200FB1E8B8EAC00FD9686 /* OnlyIntegerValueFormatter.swift */; };
 		42476DD81E71358E00F54303 /* ORSSerialBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DCF1E71358E00F54303 /* ORSSerialBuffer.m */; };
 		42476DD91E71358E00F54303 /* ORSSerialPacketDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD11E71358E00F54303 /* ORSSerialPacketDescriptor.m */; };
 		42476DDA1E71358E00F54303 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD31E71358E00F54303 /* ORSSerialPort.m */; };
 		42476DDB1E71358E00F54303 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD51E71358E00F54303 /* ORSSerialPortManager.m */; };
 		42476DDC1E71358E00F54303 /* ORSSerialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 42476DD71E71358E00F54303 /* ORSSerialRequest.m */; };
-		42476DDE1E713D1300F54303 /* serialPortDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42476DDD1E713D1300F54303 /* serialPortDataParser.swift */; };
+		42476DDE1E713D1300F54303 /* SerialPortDataParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42476DDD1E713D1300F54303 /* SerialPortDataParser.swift */; };
 		427850501E6E8AF4005B8695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278504F1E6E8AF4005B8695 /* AppDelegate.swift */; };
-		427850521E6E8AF4005B8695 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427850511E6E8AF4005B8695 /* ViewController.swift */; };
 		427850541E6E8AF4005B8695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427850531E6E8AF4005B8695 /* Assets.xcassets */; };
 		427850571E6E8AF4005B8695 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 427850551E6E8AF4005B8695 /* Main.storyboard */; };
 		427850621E6E8AF4005B8695 /* SerialPortAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427850611E6E8AF4005B8695 /* SerialPortAppTests.swift */; };
 		4278506D1E6E8AF4005B8695 /* SerialPortAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278506C1E6E8AF4005B8695 /* SerialPortAppUITests.swift */; };
-		4F287E52194376A271882BF7 /* libPods-SerialPortApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8E962FD5A800D5223894C4 /* libPods-SerialPortApp.a */; };
+		42C9F4271E82C2F1003165B3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9F4251E82C2F1003165B3 /* MainViewController.swift */; };
+		42C9F4291E82C354003165B3 /* FormatterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42C9F4281E82C354003165B3 /* FormatterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2908C51E9BED913100DEE3DE /* libPods-SerialPortApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SerialPortApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4202AD641E7637BA00CAE069 /* AccelAlgoritnm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AccelAlgoritnm.c; sourceTree = "<group>"; };
 		4202AD651E7637BA00CAE069 /* AccelAlgoritnm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelAlgoritnm.h; sourceTree = "<group>"; };
+		421200F81E8A415500FD9686 /* NSColor_Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColor_Extention.swift; sourceTree = "<group>"; };
+		421200FB1E8B8EAC00FD9686 /* OnlyIntegerValueFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnlyIntegerValueFormatter.swift; sourceTree = "<group>"; };
 		42476DCE1E71358E00F54303 /* ORSSerialBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialBuffer.h; sourceTree = "<group>"; };
 		42476DCF1E71358E00F54303 /* ORSSerialBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialBuffer.m; sourceTree = "<group>"; };
 		42476DD01E71358E00F54303 /* ORSSerialPacketDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPacketDescriptor.h; sourceTree = "<group>"; };
@@ -53,10 +59,9 @@
 		42476DD51E71358E00F54303 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		42476DD61E71358E00F54303 /* ORSSerialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialRequest.h; sourceTree = "<group>"; };
 		42476DD71E71358E00F54303 /* ORSSerialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialRequest.m; sourceTree = "<group>"; };
-		42476DDD1E713D1300F54303 /* serialPortDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = serialPortDataParser.swift; sourceTree = "<group>"; };
+		42476DDD1E713D1300F54303 /* SerialPortDataParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerialPortDataParser.swift; sourceTree = "<group>"; };
 		4278504C1E6E8AF4005B8695 /* SerialPortApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SerialPortApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4278504F1E6E8AF4005B8695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		427850511E6E8AF4005B8695 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		427850531E6E8AF4005B8695 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		427850561E6E8AF4005B8695 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		427850581E6E8AF4005B8695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,8 +72,9 @@
 		4278506C1E6E8AF4005B8695 /* SerialPortAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialPortAppUITests.swift; sourceTree = "<group>"; };
 		4278506E1E6E8AF4005B8695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4278507B1E6E98FC005B8695 /* SerialPortApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SerialPortApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		42C9F4251E82C2F1003165B3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		42C9F4281E82C354003165B3 /* FormatterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterViewController.swift; sourceTree = "<group>"; };
 		4B14AA1EA89A8442DDE6F821 /* Pods-SerialPortApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SerialPortApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SerialPortApp/Pods-SerialPortApp.release.xcconfig"; sourceTree = "<group>"; };
-		4B8E962FD5A800D5223894C4 /* libPods-SerialPortApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SerialPortApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		918AA5ABBA25406FD66F6D0C /* Pods-SerialPortApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SerialPortApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SerialPortApp/Pods-SerialPortApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F287E52194376A271882BF7 /* libPods-SerialPortApp.a in Frameworks */,
+				2EE489F03F2E581CE2C6CF17 /* libPods-SerialPortApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +111,22 @@
 				4B14AA1EA89A8442DDE6F821 /* Pods-SerialPortApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		421200F71E8A412500FD9686 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				421200F81E8A415500FD9686 /* NSColor_Extention.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		421200FA1E8B6BB800FD9686 /* OverrideClass */ = {
+			isa = PBXGroup;
+			children = (
+				421200FB1E8B8EAC00FD9686 /* OnlyIntegerValueFormatter.swift */,
+			);
+			path = OverrideClass;
 			sourceTree = "<group>";
 		};
 		42476DCC1E71358E00F54303 /* Module */ = {
@@ -158,10 +180,12 @@
 			isa = PBXGroup;
 			children = (
 				4278507B1E6E98FC005B8695 /* SerialPortApp-Bridging-Header.h */,
-				42476DCC1E71358E00F54303 /* Module */,
+				421200FA1E8B6BB800FD9686 /* OverrideClass */,
+				421200F71E8A412500FD9686 /* Extension */,
+				42C9F4211E82C1C7003165B3 /* ViewController */,
 				4278507A1E6E8E18005B8695 /* Model */,
+				42476DCC1E71358E00F54303 /* Module */,
 				4278504F1E6E8AF4005B8695 /* AppDelegate.swift */,
-				427850511E6E8AF4005B8695 /* ViewController.swift */,
 				427850531E6E8AF4005B8695 /* Assets.xcassets */,
 				427850551E6E8AF4005B8695 /* Main.storyboard */,
 				427850581E6E8AF4005B8695 /* Info.plist */,
@@ -190,17 +214,26 @@
 		4278507A1E6E8E18005B8695 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				42476DDD1E713D1300F54303 /* serialPortDataParser.swift */,
+				42476DDD1E713D1300F54303 /* SerialPortDataParser.swift */,
 				4202AD641E7637BA00CAE069 /* AccelAlgoritnm.c */,
 				4202AD651E7637BA00CAE069 /* AccelAlgoritnm.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
+		42C9F4211E82C1C7003165B3 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				42C9F4251E82C2F1003165B3 /* MainViewController.swift */,
+				42C9F4281E82C354003165B3 /* FormatterViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		D9ED40E8188DCF4AA5E62413 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4B8E962FD5A800D5223894C4 /* libPods-SerialPortApp.a */,
+				2908C51E9BED913100DEE3DE /* libPods-SerialPortApp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -393,14 +426,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				4202AD661E7637BA00CAE069 /* AccelAlgoritnm.c in Sources */,
-				427850521E6E8AF4005B8695 /* ViewController.swift in Sources */,
-				42476DDE1E713D1300F54303 /* serialPortDataParser.swift in Sources */,
+				42476DDE1E713D1300F54303 /* SerialPortDataParser.swift in Sources */,
+				42C9F4271E82C2F1003165B3 /* MainViewController.swift in Sources */,
+				421200FC1E8B8EAC00FD9686 /* OnlyIntegerValueFormatter.swift in Sources */,
 				42476DDA1E71358E00F54303 /* ORSSerialPort.m in Sources */,
+				421200F91E8A415500FD9686 /* NSColor_Extention.swift in Sources */,
 				42476DDC1E71358E00F54303 /* ORSSerialRequest.m in Sources */,
 				42476DD91E71358E00F54303 /* ORSSerialPacketDescriptor.m in Sources */,
 				42476DDB1E71358E00F54303 /* ORSSerialPortManager.m in Sources */,
 				427850501E6E8AF4005B8695 /* AppDelegate.swift in Sources */,
 				42476DD81E71358E00F54303 /* ORSSerialBuffer.m in Sources */,
+				42C9F4291E82C354003165B3 /* FormatterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

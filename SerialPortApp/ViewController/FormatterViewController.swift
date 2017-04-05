@@ -1,5 +1,5 @@
 //
-//  DataFormatterViewController.swift
+//  FormatterViewController.swift
 //  SerialPortApp
 //
 //  Created by 林盈志 on 22/03/2017.
@@ -8,7 +8,13 @@
 
 import Cocoa
 
-class DataFormatterViewController: NSViewController,NSTableViewDelegate,NSTableViewDataSource,NSTextFieldDelegate {
+protocol FormatterDelegate {
+    func formatterArrayUpdate(formatterArray:Array<Formatter>)
+}
+
+class FormatterViewController: NSViewController,NSTableViewDelegate,NSTableViewDataSource,NSTextFieldDelegate {
+    
+    var delegate:FormatterDelegate?
     
     // MARK: - View parameters
     @IBOutlet weak var dataFormaterTableView: NSTableView!{
@@ -32,17 +38,14 @@ class DataFormatterViewController: NSViewController,NSTableViewDelegate,NSTableV
     // MARK: - Other parameters
     var formatterArray:Array<Formatter> = []{
         didSet{
-            self.dataFormaterTableView.reloadData()
+            if (self.dataFormaterTableView) != nil{
+                self.dataFormaterTableView.reloadData()
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // reload array from last setting
-        if UserDefaults.standard.object(forKey:"formatterArray") != nil{
-            let data:NSData = UserDefaults.standard.object(forKey:"formatterArray") as! NSData
-            self.formatterArray = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! Array<Formatter>
-        }
     }
     
     @objc fileprivate func setFormate(_ sender:Any){
@@ -57,7 +60,7 @@ class DataFormatterViewController: NSViewController,NSTableViewDelegate,NSTableV
             self.formatterArray[dataRow].type = (Formatter.formatterType(rawValue: (sender as! NSPopUpButton).indexOfSelectedItem))!
             self.dataFormaterTableView.reloadData()
         case 2:
-            self.formatterArray[dataRow].value = Int32.init((sender as! NSTextField).stringValue)!
+            self.formatterArray[dataRow].value = Int64.init((sender as! NSTextField).stringValue)!
         case 3:
             self.formatterArray[dataRow].color = (sender as! NSColorWell).color
         default:
@@ -84,9 +87,9 @@ class DataFormatterViewController: NSViewController,NSTableViewDelegate,NSTableV
         
         UserDefaults.standard.set(NSKeyedArchiver.archivedData(withRootObject: self.formatterArray), forKey: "formatterArray")
         UserDefaults.standard.synchronize()
+        delegate?.formatterArrayUpdate(formatterArray: self.formatterArray)
         self.dismissViewController(self)
     }
-    
     
     // MARK: - tableView datasource
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -151,7 +154,7 @@ class DataFormatterViewController: NSViewController,NSTableViewDelegate,NSTableV
             return colorWell
         }()
 
-        if typeSelector.indexOfSelectedItem == Formatter.formatterType.Header.rawValue{
+        if (typeSelector.indexOfSelectedItem == Formatter.formatterType.Header.rawValue) || (typeSelector.indexOfSelectedItem == Formatter.formatterType.Trailer.rawValue){
             nameTextField.isEditable = false
             nameTextField.backgroundColor = NSColor.lightGray
             colorPicker.isEnabled = false

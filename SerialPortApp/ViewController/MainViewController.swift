@@ -15,16 +15,11 @@ let kAccelYPlotIdentifier:String = "kAccelYPlotIdentifier"
 let kAccelZPlotIdentifier:String = "kAccelZPlotIdentifier"
 
 
-class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataParserDelegate,CPTPlotDelegate,CPTPlotDataSource{
+class MainViewController: NSViewController,FormatterDelegate,ORSSerialPortDelegate,SPDataParserDelegate,CPTPlotDelegate,CPTPlotDataSource{
 
     //Graph plot variables
+    let plotDataLength = 500
     
-    var accelDataArray:Array<accelDataPacket> = []
-    var accelTDataArray:[Float] = []
-    var accelXDataArray:[Int16] = []
-    var accelYDataArray:[Int16] = []
-    var accelZDataArray:[Int16] = []
-    let plotDataSize = 1000
     //Serial port variables
     let serialPortManager = ORSSerialPortManager.shared()
     var serialPort: ORSSerialPort? {
@@ -35,18 +30,32 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
         }
     }
     
-    lazy var SPDataParser:serialPortDataParser! = {
-        self.SPDataParser = serialPortDataParser.init()
-        self.SPDataParser.delegate = self
-        return self.SPDataParser
-        }()
-
+    //Data
+    var spDataParser:SPDataParser?{
+        didSet{
+            oldValue?.delegate = nil
+            spDataParser?.delegate = self
+        }
+    }
+    var dataPack:SPPack = SPPack.init()
+    var dataArray:Array<Array<Int64>> = [[]]
+    var formatterArray:Array<Formatter> = []{
+        didSet{
+            self.dataArray = []
+            for _ in 0..<formatterArray.count {
+                self.dataArray.append([])
+            }
+            createPlotView()
+            
+        }
+    }
+    
+    
     @IBOutlet weak var serialPortSelector: NSPopUpButton!{
         didSet{
             var serialPortNames:[String] = []
             for port in self.serialPortManager.availablePorts {
                 serialPortNames.append(port.name)
-                //serialPortNames.insert(port.name, at: 0)
             }
             serialPortSelector.removeAllItems()
             serialPortSelector.addItems(withTitles:serialPortNames)
@@ -128,31 +137,21 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
     @IBOutlet weak var spFuncTabView: NSTabView!
     
    
-    var accelGraphHostView:CPTGraphHostingView!
-    var accelGraph:CPTGraph!
+    var graphHostView:CPTGraphHostingView!
+    var graph:CPTGraph!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UserDefaults.standard.object(forKey:"formatterArray") != nil{
+            let data:NSData = UserDefaults.standard.object(forKey:"formatterArray") as! NSData
+            self.formatterArray = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! Array<Formatter>
+            createPlotView()
+        }
+    }
     
-        self.spPanelContainerView.wantsLayer = true
-        
-        self.accelGraphHostView = self.createHostingView(frame: self.spPlotContainerView.bounds)
-        self.accelGraphHostView.wantsLayer = true
-        self.accelGraphHostView.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.spPlotContainerView.addSubview(accelGraphHostView)
-
-        self.accelGraphHostView.topAnchor.constraint(equalTo: self.spPlotContainerView.topAnchor).isActive = true
-        self.accelGraphHostView.bottomAnchor.constraint(equalTo: self.spPlotContainerView.bottomAnchor).isActive = true
-        self.accelGraphHostView.leadingAnchor.constraint(equalTo: self.spPlotContainerView.leadingAnchor).isActive = true
-        self.accelGraphHostView.trailingAnchor.constraint(equalTo: self.spPlotContainerView.trailingAnchor).isActive = true
-    
-        self.accelGraph = self.createLinGraph(identifier: kAccelPlotIdentifier,
-                                              hostView: self.accelGraphHostView,
-                                              start: 0,
-                                              length: self.accelDataArray.count)
-        
-        self.view.layoutSubtreeIfNeeded()
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        self.view.window?.setFrame(NSRect(x:0,y:0,width:1000,height:1000), display: true)
     }
     
     override var representedObject: Any? {
@@ -160,10 +159,51 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
             // Update the view, if already loaded.
         }
     }
+
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "FormatterVCSeque"){
+            let formatterViewController:FormatterViewController = segue.destinationController as! FormatterViewController
+            formatterViewController.formatterArray = self.formatterArray
+            formatterViewController.delegate = self
+        }
+    }
+    
+    func createPlotView(){
+        self.spPanelContainerView.wantsLayer = true
+        
+        if (self.graphHostView != nil){
+            self.graphHostView.removeFromSuperview()
+        }
+        
+        self.graphHostView = self.createHostingView(frame: self.spPlotContainerView.bounds)
+        self.graphHostView.wantsLayer = true
+        self.graphHostView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.spPlotContainerView.addSubview(self.graphHostView)
+        
+        self.graphHostView.topAnchor.constraint(equalTo: self.spPlotContainerView.topAnchor).isActive = true
+        self.graphHostView.bottomAnchor.constraint(equalTo: self.spPlotContainerView.bottomAnchor).isActive = true
+        self.graphHostView.leadingAnchor.constraint(equalTo: self.spPlotContainerView.leadingAnchor).isActive = true
+        self.graphHostView.trailingAnchor.constraint(equalTo: self.spPlotContainerView.trailingAnchor).isActive = true
+        
+        self.graph = self.createLinGraph(   hostView: self.graphHostView,
+                                            start: 0,
+                                            length: plotDataLength)
+        
+        self.view.layoutSubtreeIfNeeded()
+    }
+    
+    
+    func formatterArrayUpdate(formatterArray: Array<Formatter>) {
+        self.formatterArray = formatterArray
+    }
     
     //MARK: - Interface compoments action
     
     func serialPortBtnAction() {
+        
         if self.serialPortOpenBtn.title == "OPEN" {
             self.serialPortOpenBtn.title = "CLOSE"
             self.serialPortConfig()
@@ -197,7 +237,7 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
         return hostView
     }
     
-    func createLinGraph(identifier:String,hostView:CPTGraphHostingView,start:Float,length:NSInteger) -> CPTGraph {
+    func createLinGraph(hostView:CPTGraphHostingView,start:Float,length:NSInteger) -> CPTGraph {
         
         let hostViewBounds:CGRect = hostView.frame
         let graph:CPTGraph = CPTXYGraph.init(frame:hostViewBounds)
@@ -255,66 +295,36 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
         let formatter:NumberFormatter =  NumberFormatter.init()
         formatter.maximumSignificantDigits = 2
         y.labelFormatter = formatter
-        
-        // Create the plot for Accel T
-        let dataTSourceLinePlot:CPTScatterPlot = CPTScatterPlot.init()
-        dataTSourceLinePlot.identifier     = kAccelTPlotIdentifier as (NSCoding & NSCopying & NSObjectProtocol)?
-        dataTSourceLinePlot.cachePrecision = CPTPlotCachePrecision.double
-        
-        let lineTStyle:CPTMutableLineStyle = dataTSourceLinePlot.dataLineStyle?.mutableCopy() as! CPTMutableLineStyle
-        lineTStyle.lineWidth              = 1.0
-        lineTStyle.lineColor              = CPTColor.purple()
-        dataTSourceLinePlot.dataLineStyle = lineTStyle
-        
-        dataTSourceLinePlot.dataSource = self
-        graph.add(dataTSourceLinePlot)
-        
-        // Create the plot for Accel X
-        let dataXSourceLinePlot:CPTScatterPlot = CPTScatterPlot.init()
-        dataXSourceLinePlot.identifier     = kAccelXPlotIdentifier as (NSCoding & NSCopying & NSObjectProtocol)?
-        dataXSourceLinePlot.cachePrecision = CPTPlotCachePrecision.double
-        
-        let lineXStyle:CPTMutableLineStyle = dataXSourceLinePlot.dataLineStyle?.mutableCopy() as! CPTMutableLineStyle
-        lineXStyle.lineWidth              = 1.0
-        lineXStyle.lineColor              = CPTColor.red()
-        dataXSourceLinePlot.dataLineStyle = lineXStyle
-        
-        dataXSourceLinePlot.dataSource = self
-        graph.add(dataXSourceLinePlot)
-        
-        // Create the plot for Accel Y
-        let dataYSourceLinePlot:CPTScatterPlot = CPTScatterPlot.init()
-        dataYSourceLinePlot.identifier     = kAccelYPlotIdentifier as (NSCoding & NSCopying & NSObjectProtocol)?
-        dataYSourceLinePlot.cachePrecision = CPTPlotCachePrecision.double
-        
-        let lineYStyle:CPTMutableLineStyle = dataYSourceLinePlot.dataLineStyle?.mutableCopy() as! CPTMutableLineStyle
-        lineYStyle.lineWidth              = 1.0
-        lineYStyle.lineColor              = CPTColor.blue()
-        dataYSourceLinePlot.dataLineStyle = lineYStyle
-        
-        dataYSourceLinePlot.dataSource = self
-        graph.add(dataYSourceLinePlot)
 
         
-        // Create the plot for Accel Z
-        let dataZSourceLinePlot:CPTScatterPlot = CPTScatterPlot.init()
-        dataZSourceLinePlot.identifier     = kAccelZPlotIdentifier as (NSCoding & NSCopying & NSObjectProtocol)?
-        dataZSourceLinePlot.cachePrecision = CPTPlotCachePrecision.double
+
         
-        let lineZStyle:CPTMutableLineStyle = dataZSourceLinePlot.dataLineStyle?.mutableCopy() as! CPTMutableLineStyle
-        lineZStyle.lineWidth              = 1.0
-        lineZStyle.lineColor              = CPTColor.green()
-        dataZSourceLinePlot.dataLineStyle = lineZStyle
-        
-        dataZSourceLinePlot.dataSource = self
-        graph.add(dataZSourceLinePlot)
+        for idx in 0..<self.formatterArray.count{
+            
+            if (self.formatterArray[idx].type != Formatter.formatterType.Header) && (self.formatterArray[idx].type != Formatter.formatterType.Trailer) {
+
+                let dataSourceLinePlot:CPTScatterPlot = CPTScatterPlot.init()
+                let lineStyle:CPTMutableLineStyle = dataSourceLinePlot.dataLineStyle?.mutableCopy() as! CPTMutableLineStyle
+                
+                dataSourceLinePlot.identifier     =  String(idx) as (NSCoding & NSCopying & NSObjectProtocol)?
+                dataSourceLinePlot.cachePrecision = CPTPlotCachePrecision.double
+                
+                let lineColor:CGColor            = self.formatterArray[idx].color.cgColor
+                lineStyle.lineWidth              = 1.0
+                lineStyle.lineColor              = CPTColor.init(cgColor: lineColor)
+                dataSourceLinePlot.dataLineStyle = lineStyle
+                
+                dataSourceLinePlot.dataSource = self
+                graph.add(dataSourceLinePlot)
+            }
+        }
         
         // Plot space
         let plotSpace:CPTXYPlotSpace = graph.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.allowsMomentumX = true
         plotSpace.allowsUserInteraction  = true
         
-        plotSpace.xRange = CPTPlotRange.init(location: 0, length: NSNumber.init(value: plotDataSize))
+        plotSpace.xRange = CPTPlotRange.init(location: 0, length: NSNumber.init(value: plotDataLength))
         plotSpace.yRange = CPTPlotRange.init(location: NSNumber.init(value: -65535/2), length: 65535)
      
         return graph
@@ -324,54 +334,20 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
     
     func numberOfRecords(for plot: CPTPlot) -> UInt {
         
-        if (plot.identifier?.isEqual(kAccelTPlotIdentifier))! {
-            return UInt(self.accelTDataArray.count)
-        }else if (plot.identifier?.isEqual(kAccelXPlotIdentifier))! {
-            return UInt(self.accelXDataArray.count)
-        }else if (plot.identifier?.isEqual(kAccelYPlotIdentifier))! {
-            return UInt(self.accelYDataArray.count)
-        }else if (plot.identifier?.isEqual(kAccelZPlotIdentifier))! {
-            return UInt(self.accelZDataArray.count)
-        }else{
-            return 0
-        }
+        let idx = Int(plot.identifier as! String)
+        return UInt(self.dataArray[idx!].count)
     }
     
     func number(for plot: CPTPlot, field fieldEnum: UInt, record idx: UInt) -> Any? {
         
         let _index:NSNumber = NSNumber.init(value: idx)
+        let idx = Int(plot.identifier as! String)
         
-        switch plot.identifier as! String {
-        case kAccelTPlotIdentifier:
-            switch CPTScatterPlotField(rawValue: Int(fieldEnum))! {
-            case .X:
-                return _index
-            case .Y:
-                return self.accelTDataArray[_index.intValue]
-            }
-        case kAccelXPlotIdentifier:
-            switch CPTScatterPlotField(rawValue: Int(fieldEnum))! {
-            case .X:
-                return _index
-            case .Y:
-                return self.accelXDataArray[_index.intValue]
-            }
-        case kAccelYPlotIdentifier:
-            switch CPTScatterPlotField(rawValue: Int(fieldEnum))! {
-            case .X:
-                return _index
-            case .Y:
-                return self.accelYDataArray[_index.intValue]
-            }
-        case kAccelZPlotIdentifier:
-            switch CPTScatterPlotField(rawValue: Int(fieldEnum))! {
-            case .X:
-                return _index
-            case .Y:
-                return self.accelZDataArray[_index.intValue]
-            }
-        default:
-            return 0
+        switch CPTScatterPlotField(rawValue: Int(fieldEnum))! {
+        case .X:
+             return _index
+        case .Y:
+            return (self.dataArray[idx!])[_index.intValue]
         }
     }
     
@@ -411,29 +387,26 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
 
     // MARK: - ORSSerialPort delegate
     func serialPortWasOpened(_ serialPort: ORSSerialPort) {
+        self.spDataParser = SPDataParser.init(formatterArray: self.formatterArray)
         
     }
     
     func serialPortWasClosed(_ serialPort: ORSSerialPort) {
-        
+        self.spDataParser = nil
     }
     
     func serialPort(_ serialPort: ORSSerialPort, didReceive data: Data) {
         
-        if let string = NSString(data: data, encoding: String.Encoding.ascii.rawValue) {
-            //print("\nReceived: \"\(string)\" \(data)", terminator: "\n")
-        }
-        
         let uint8Ptr = UnsafeMutablePointer<UInt8>.allocate(capacity: data.count)
         uint8Ptr.initialize(from: data)
-        let buffArray:NSMutableArray = NSMutableArray()
+        var byteArray:Array<UInt8> = []
         
         for i in 0...(data.count - 1){
-            let val = uint8Ptr[i]
-            buffArray.add(val)
+            byteArray.append(uint8Ptr[i])
         }
-        self.SPDataParser.parseSerailData(dataArray:buffArray )
-        buffArray.removeAllObjects()
+        self.spDataParser?.parseSerialData(byteArray: byteArray)
+        
+        byteArray.removeAll()
     }
     
     func serialPortWasRemoved(fromSystem serialPort: ORSSerialPort) {
@@ -446,44 +419,35 @@ class MainViewController: NSViewController,ORSSerialPortDelegate,serielPortDataP
     }
     
     // MARK: - serial port parser delegate
-    func didGetAccelDataPacket(dataPacket: accelDataPacket) {
-        
-        self.accelDataArray.append(dataPacket)
-        self.accelTDataArray.append(dataPacket.ACCEL_TEMP)
-        self.accelXDataArray.append(dataPacket.ACCEL_X)
-        self.accelYDataArray.append(dataPacket.ACCEL_Y)
-        self.accelZDataArray.append(dataPacket.ACCEL_Z)
-        let updateSize = 50
-        
-        if self.accelDataArray.count == self.plotDataSize {
-            
-            let theGraph:CPTGraph = self.accelGraph
-            var thePlot:CPTPlot   = theGraph.plot(withIdentifier: kAccelTPlotIdentifier as NSCopying?)!
-            thePlot.insertData(at: 0, numberOfRecords: UInt(self.accelXDataArray.count))
-            
-            thePlot = theGraph.plot(withIdentifier: kAccelXPlotIdentifier as NSCopying?)!
-            thePlot.insertData(at: 0, numberOfRecords: UInt(self.accelXDataArray.count))
-            
-            thePlot = theGraph.plot(withIdentifier: kAccelYPlotIdentifier as NSCopying?)!
-            thePlot.insertData(at: 0, numberOfRecords: UInt(self.accelYDataArray.count))
-            
-            thePlot = theGraph.plot(withIdentifier: kAccelZPlotIdentifier as NSCopying?)!
-            thePlot.insertData(at: 0, numberOfRecords: UInt(self.accelZDataArray.count))
-            
-            self.accelDataArray.removeSubrange(1...updateSize)
-            self.accelTDataArray.removeSubrange(1...updateSize)
-            self.accelXDataArray.removeSubrange(1...updateSize)
-            self.accelYDataArray.removeSubrange(1...updateSize)
-            self.accelZDataArray.removeSubrange(1...updateSize)
-        }
-        
-        let t = dataPacket.ACCEL_TEMP
-        let x = dataPacket.ACCEL_X
-        let y = dataPacket.ACCEL_Y
-        let z = dataPacket.ACCEL_Z
-        let s = dataPacket.ACCEL_STABLE
-        self.serialPortInfoLable.stringValue = String(format: "Time:%@, \nT:%0.1f, \nX:%d, \nY:%d, \nZ:%d, \nS:%d\n",Date() as CVarArg,t,x,y,z,s.rawValue)
+    func didGetDataPacket(packetArray:Array<SPPack>) {
 
-    }
+        //print(packetArray.count)
+    
+        
+        for packet in packetArray{
+            
+            for idx in 0..<packet.dataArray.count{
+                self.dataArray[idx].append(packet.dataArray[idx])
+            }
+            
+            if (self.dataArray.last?.count)! > plotDataLength{
+                
+                let theGraph:CPTGraph = self.graph
+                var thePlot:CPTPlot?
+                
+                //Plot
+                for idx in 0..<self.formatterArray.count{
+                    
+                    if (self.formatterArray[idx].type != Formatter.formatterType.Header) && (self.formatterArray[idx].type != Formatter.formatterType.Trailer) {
+                        
+//                        thePlot = theGraph.plot(withIdentifier: String(idx) as (NSCoding & NSCopying & NSObjectProtocol)?)!
+//                        thePlot?.insertData(at: 0, numberOfRecords: UInt(self.dataArray[idx].count))
+                        
+                        self.dataArray[idx].remove(at: 0)
+                    }
+                }
+            }
+        }
+     }
 }
 

@@ -9,8 +9,10 @@
 
 #import <ORSSerialPort.h>
 #import <ORSSerialPortManager.h>
-#import <CorePlot.h>
 #import <AccelAlgoritnm.h>
+#import <CorePlot.h>
+#import <CPTScatterPlot.h>
+
 
 //https://blog.alwold.com/2014/08/07/using-coreplot-with-swift-in-ios/
 
